@@ -18,7 +18,7 @@ This repository contains an interactive Java/JavaFX based periodic table applica
  git clone https://github.com/your-username/periodic-table.git
 ```
 
-2. Ensure that you have Java Development Kit (JDK) installed on your machine. The application requires Java 8 or higher as well as the [JavaFX](https://openjfx.io/) extension. 
+2. Ensure that you have Java Development Kit (JDK) installed on your machine. The application requires Java 8 or higher as well as the [JavaFX](https://openjfx.io/) library. 
 
 3. Open the project in your preferred Integrated Development Environment (IDE).
 
