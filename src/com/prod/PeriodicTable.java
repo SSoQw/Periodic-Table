@@ -1,19 +1,22 @@
-package Common;/*
+package com.prod;
+/*
  * Periodic Table GUI
  * Elijah Sanderson
  * Reilly LeBlanc
  */
 
+import com.prod.Elements.*;
 import javafx.animation.PathTransition;
 import javafx.application.Application;
 import javafx.geometry.Pos;
 import javafx.scene.Cursor;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.effect.GaussianBlur;
+import javafx.scene.image.Image;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
-import javafx.scene.effect.GaussianBlur;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
 import javafx.scene.shape.Line;
@@ -23,10 +26,12 @@ import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.util.Duration;
-import java.awt.Desktop;
+
+import java.awt.*;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Objects;
 
 
 /**
@@ -88,13 +93,12 @@ public class PeriodicTable extends Application {
         scene.setFill(Color.web("#434345"));
 
         // add listeners to each element
-        for (int i = 0; i < elementList.size(); i++) {
-            StackPane stack = elementList.get(i);
+        for (StackPane stack : elementList) {
             addListeners(root, stack, grid, scene);
         }
 
         // show stage
-        primaryStage.getIcons().add(new Image(PeriodicTable.class.getResourceAsStream("./images/icon.png")));
+        primaryStage.getIcons().add(new Image(Objects.requireNonNull(PeriodicTable.class.getResourceAsStream("./images/icon.png"))));
         primaryStage.setTitle("Periodic Table of com.Elements");
         primaryStage.setScene(scene);
         primaryStage.show();
@@ -506,40 +510,18 @@ public class PeriodicTable extends Application {
     }
 
     private Text formatCategory(String category, Paint fill) {
-        Text txtCategory;
-        switch (category) {
-            case "alkali":
-                txtCategory = new Text("alkali metal");
-                break;
-            case "alkaline_earth":
-                txtCategory = new Text("alkaline earth");
-                break;
-            case "transition":
-                txtCategory = new Text("transition metal");
-                break;
-            case "post_transition":
-                txtCategory = new Text("post-transition");
-                break;
-            case "lanthanide":
-                txtCategory = new Text("lanthanide");
-                break;
-            case "actinide":
-                txtCategory = new Text("actinide");
-                break;
-            case "metalloid":
-                txtCategory = new Text("metalloid");
-                break;
-            case "reactive_nonmetal":
-                txtCategory = new Text("nonmetal");
-                break;
-            case "noble_gas":
-                txtCategory = new Text("noble gas");
-                break;
-            case "unknown":
-            default:
-                txtCategory = new Text("unknown");
-                break;
-        }
+        Text txtCategory = switch (category) {
+            case "alkali" -> new Text("alkali metal");
+            case "alkaline_earth" -> new Text("alkaline earth");
+            case "transition" -> new Text("transition metal");
+            case "post_transition" -> new Text("post-transition");
+            case "lanthanide" -> new Text("lanthanide");
+            case "actinide" -> new Text("actinide");
+            case "metalloid" -> new Text("metalloid");
+            case "reactive_nonmetal" -> new Text("nonmetal");
+            case "noble_gas" -> new Text("noble gas");
+            default -> new Text("unknown");
+        };
 
         txtCategory.setFill(fill);
 
