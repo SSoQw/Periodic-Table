@@ -26,7 +26,7 @@ This repository contains an interactive Java/JavaFX based periodic table applica
 
 ## Usage
 
-1. Run the application by executing the compiled Java file.
+1. Run the application by executing the compiled Java file. (WIP)
 
 2. The periodic table will be displayed, allowing you to explore the elements.
 
