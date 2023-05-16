@@ -57,5 +57,5 @@ This project is licensed under the [MIT License](LICENSE). You are free to use, 
 
 ## Contriubters
 
--LeBlanc, Reilly
--Sanderson, Elijah
+- LeBlanc, Reilly
+- Sanderson, Elijah
