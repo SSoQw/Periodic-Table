@@ -1,2 +1,2 @@
 # PeriodicTable
-A interative java/javaFX based periodic table
+An interative java/javaFX based periodic table
