@@ -1,11 +1,9 @@
-/*
+package Common;/*
  * Periodic Table GUI
  * Elijah Sanderson
  * Reilly LeBlanc
  */
 
-
-import Elements.java;
 import javafx.animation.PathTransition;
 import javafx.application.Application;
 import javafx.geometry.Pos;
@@ -97,7 +95,7 @@ public class PeriodicTable extends Application {
 
         // show stage
         primaryStage.getIcons().add(new Image(PeriodicTable.class.getResourceAsStream("./images/icon.png")));
-        primaryStage.setTitle("Periodic Table of Elements");
+        primaryStage.setTitle("Periodic Table of com.Elements");
         primaryStage.setScene(scene);
         primaryStage.show();
     }
