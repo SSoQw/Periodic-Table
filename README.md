@@ -14,7 +14,9 @@ This repository contains an interactive Java/JavaFX based periodic table applica
 
 1. Clone the repository to your local machine using the following command:
 
-> ```GIT git clone https://github.com/your-username/periodic-table.git```
+```GIT 
+ git clone https://github.com/your-username/periodic-table.git
+```
 
 2. Ensure that you have Java Development Kit (JDK) installed on your machine. The application requires Java 8 or higher as well as the [JavaFX](https://openjfx.io/) extension. 
 
