@@ -5,7 +5,7 @@ package com.prod;
  * Reilly LeBlanc
  */
 
-import com.prod.Elements.*;
+import com.prod.Elements.Element;
 import javafx.animation.PathTransition;
 import javafx.application.Application;
 import javafx.geometry.Pos;
@@ -13,7 +13,6 @@ import javafx.scene.Cursor;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.effect.GaussianBlur;
-import javafx.scene.image.Image;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
@@ -31,7 +30,6 @@ import java.awt.*;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
-import java.util.Objects;
 
 
 /**
@@ -98,7 +96,7 @@ public class PeriodicTable extends Application {
         }
 
         // show stage
-        primaryStage.getIcons().add(new Image(Objects.requireNonNull(PeriodicTable.class.getResourceAsStream("./images/icon.png"))));
+        //primaryStage.getIcons().add(new Image(Objects.requireNonNull(PeriodicTable.class.getResourceAsStream("/../images/icon.png"))));
         primaryStage.setTitle("Periodic Table of com.Elements");
         primaryStage.setScene(scene);
         primaryStage.show();
