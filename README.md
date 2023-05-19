@@ -50,7 +50,7 @@ Then add the following options, ensure that you change ``module-path`` to the ap
 
 ## Usage
 
-1. Run the application by executing the compiled Java file. (WIP)
+1. Run the application by executing the [compiled Java file](https://github.com/SSoQw/Periodic-Table/issues/2). 
 
 2. The periodic table will be displayed, allowing you to explore the elements.
 
