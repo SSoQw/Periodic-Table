@@ -2,6 +2,10 @@
 
 This repository contains an interactive Java/JavaFX based periodic table application. The application allows users to explore and interact with the elements of the periodic table.
 
+<p align="center">
+  <img width="800" height="475" src="https://i.imgur.com/Y8KxuXn.png">
+</p>
+
 ## Features
 
 - Display of the entire periodic table with element symbols, atomic numbers, and element categories.
