@@ -1,9 +1,4 @@
 package com.prod;
-/*
- * Periodic Table GUI
- * Elijah Sanderson
- * Reilly LeBlanc
- */
 
 import com.prod.Elements.Element;
 import javafx.animation.PathTransition;
