@@ -24,16 +24,23 @@ This repository contains an interactive Java/JavaFX based periodic table applica
 
 4. Add JavaFX moudles to your VM arguments.   
 
+In IntelliJ you can do this by right-clicking the ``PeriodicTable.java`` tab, going to the ``More Run/Debug submenu``, and clicking ``Modify Run Configuration...``
+
+<p align="center">
+  <img width="800" height="500" src="https://i.imgur.com/NjV9q9g.png">
+</p>
+
+Once the Edit Run Configuration window is open, you can either hit ``Alt+v`` or selecting ``Add VM options`` from the ``Modify options`` menu
+
+<p align="center">
+  <img width="800" height="510" src="https://i.imgur.com/xbDixtd.png">
+</p>
+
+Then add the following options, ensure that you change ``module-path`` to the appropriate directory.
+
 ```
 --module-path "C:\path\to\javafx-sdk-version\lib" --add-modules=javafx.base,javafx.controls,javafx.graphics
 ```
-In IntelliJ you can do this by right-clicking the PeriodicTable.java tab, going to the More Run/Debug submenu, and clicking Modify Run Configuration...
-
-![Image showing menu path.](https://i.imgur.com/NjV9q9g.png)
-
-Once the Edit Run Configuration window is open, you can either hit ``Alt+v`` or selecting it from the ``Modify options`` menu
-
-![Image showing the Modify options menu and the correct slecetion.](https://i.imgur.com/xbDixtd.png)
 
 5. Build and compile the project.
 
