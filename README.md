@@ -31,6 +31,10 @@ In IntelliJ you can do this by right-clicking the PeriodicTable.java tab, going 
 
 ![Image showing menu path.](https://i.imgur.com/NjV9q9g.png)
 
+Once the Edit Run Configuration window is open, you can either hit ``Alt+v`` or selecting it from the ``Modify options`` menu
+
+![Image showing the Modify options menu and the correct slecetion.](https://i.imgur.com/xbDixtd.png)
+
 5. Build and compile the project.
 
 ## Usage
