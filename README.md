@@ -30,7 +30,7 @@ In IntelliJ you can do this by right-clicking the ``PeriodicTable.java`` tab, go
   <img width="800" height="500" src="https://i.imgur.com/NjV9q9g.png">
 </p>
 
-Once the Edit Run Configuration window is open, you can either hit ``Alt+v`` or selecting ``Add VM options`` from the ``Modify options`` menu
+Once the Edit Run Configuration window is open, you can either hit ``Alt+V`` or selecting ``Add VM options`` from the ``Modify options`` menu
 
 <p align="center">
   <img width="800" height="510" src="https://i.imgur.com/xbDixtd.png">
