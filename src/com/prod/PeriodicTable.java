@@ -21,7 +21,6 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 import javafx.scene.image.Image;
-
 import java.awt.*;
 import java.net.MalformedURLException;
 import java.net.URL;
