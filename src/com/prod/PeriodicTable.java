@@ -25,18 +25,20 @@ import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.util.Duration;
+import javafx.scene.image.Image;
 
 import java.awt.*;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Objects;
 
 /**
  * -----
  *
  * @author Elijah Sanderson
  * @author Reilly LeBlanc
- * @version 1.0
+ * @version 1.0.1
  * @since 1.0
  */
 
@@ -95,7 +97,7 @@ public class PeriodicTable extends Application {
         }
 
         // show stage
-        //primaryStage.getIcons().add(new Image(Objects.requireNonNull(PeriodicTable.class.getResourceAsStream("./images/icon.png"))));
+        primaryStage.getIcons().add(new Image("file:images/icon.png"));
         primaryStage.setTitle("Periodic Table of Elements");
         primaryStage.setScene(scene);
         primaryStage.show();
