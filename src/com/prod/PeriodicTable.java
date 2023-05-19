@@ -31,7 +31,6 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
 
-
 /**
  * -----
  *
@@ -96,8 +95,8 @@ public class PeriodicTable extends Application {
         }
 
         // show stage
-        //primaryStage.getIcons().add(new Image(Objects.requireNonNull(PeriodicTable.class.getResourceAsStream("/../images/icon.png"))));
-        primaryStage.setTitle("Periodic Table of com.Elements");
+        //primaryStage.getIcons().add(new Image(Objects.requireNonNull(PeriodicTable.class.getResourceAsStream("./images/icon.png"))));
+        primaryStage.setTitle("Periodic Table of Elements");
         primaryStage.setScene(scene);
         primaryStage.show();
     }
