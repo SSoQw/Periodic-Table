@@ -22,13 +22,13 @@ This repository contains an interactive Java/JavaFX based periodic table applica
  git clone https://github.com/your-username/periodic-table.git
 ```
 
-2. Ensure that you have Java Development Kit (JDK) installed on your machine. The application requires Java 8 or higher as well as the [JavaFX](https://openjfx.io/) library. 
+2. Ensure that you have Java Development Kit installed on your machinem as well as the [JavaFX](https://openjfx.io/) library. 
 
-3. Open the project in your preferred Integrated Development Environment (IDE).
+3. Open the project in your preferred IDE.
 
 4. Add JavaFX moudles to your VM arguments.   
 
-In IntelliJ you can do this by right-clicking the ``PeriodicTable.java`` tab, going to the ``More Run/Debug submenu``, and clicking ``Modify Run Configuration...``
+In [IntelliJ IDEA](https://www.jetbrains.com/idea/) you can do this by right-clicking the ``PeriodicTable.java`` tab, going to the ``More Run/Debug submenu``, and clicking ``Modify Run Configuration...``
 
 <p align="center">
   <img width="800" height="500" src="https://i.imgur.com/NjV9q9g.png">
