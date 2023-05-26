@@ -21,7 +21,7 @@ import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.util.Duration;
-import java.awt.*;
+import java.awt.Desktop;
 import java.net.MalformedURLException;
 import java.net.URI;
 import java.util.ArrayList;
@@ -43,57 +43,61 @@ public class PeriodicTable extends Application {
      * @param primaryStage the main stage of the application
      */
     @Override
-    public void start(Stage primaryStage) throws Exception {
+    public void start(Stage primaryStage)  {
+        try {
+            // create root StackPane
+            StackPane root = new StackPane();
 
-        // create root StackPane
-        StackPane root = new StackPane();
+            // create GridPane
+            GridPane grid = new GridPane();
+            grid.setHgap(10);
+            grid.setVgap(10);
+            grid.setAlignment(Pos.CENTER);
 
-        // create GridPane
-        GridPane grid = new GridPane();
-        grid.setHgap(10);
-        grid.setVgap(10);
-        grid.setAlignment(Pos.CENTER);
+            root.getChildren().add(grid);
 
-        root.getChildren().add(grid);
+            // create panes for each category
+            Pane alkali = new Pane();
+            Pane alkaline = new Pane();
+            Pane lanthanides = new Pane();
+            Pane actinides = new Pane();
+            Pane transitionMetals = new Pane();
+            Pane postTransitionMetals = new Pane();
+            Pane metalloids = new Pane();
+            Pane reactiveNonmetals = new Pane();
+            Pane nobleGases = new Pane();
+            Pane unknown = new Pane();
 
-        // create panes for each category
-        Pane alkali = new Pane();
-        Pane alkaline = new Pane();
-        Pane lanthanides = new Pane();
-        Pane actinides = new Pane();
-        Pane transitionMetals = new Pane();
-        Pane postTransitionMetals = new Pane();
-        Pane metalloids = new Pane();
-        Pane reactiveNonmetals = new Pane();
-        Pane nobleGases = new Pane();
-        Pane unknown = new Pane();
+            // add all to grid pane
+            grid.getChildren().addAll(alkali, alkaline, lanthanides, actinides, transitionMetals, postTransitionMetals,
+                    metalloids, reactiveNonmetals, nobleGases, unknown);
 
-        // add all to grid pane
-        grid.getChildren().addAll(alkali, alkaline, lanthanides, actinides, transitionMetals, postTransitionMetals,
-                metalloids, reactiveNonmetals, nobleGases, unknown);
+            // set elements
+            ArrayList<StackPane> elementList = new ArrayList<>();
 
-        // set elements
-        ArrayList<StackPane> elementList = new ArrayList<>();
+            for (Elements.Element element : Elements.Element.values()) {
+                setElement(element, grid, elementList);
+            }
 
-        for (Elements.Element element : Elements.Element.values()) {
-            setElement(element, grid, elementList);
+            // create new scene
+
+            Scene scene = new Scene(root, 1280, 720);
+            scene.setFill(Color.web("#434345"));
+
+            // add listeners to each element
+            for (StackPane stack : elementList) {
+                addListeners(root, stack, grid, scene);
+            }
+
+            // show stage
+            primaryStage.getIcons().add(new Image("file:images/icon.png"));
+            primaryStage.setTitle("Periodic Table of Elements");
+            primaryStage.setScene(scene);
+            primaryStage.show();
+
+        } catch (Exception e) {
+            e.printStackTrace();
         }
-
-        // create new scene
-
-        Scene scene = new Scene(root, 1280, 720);
-        scene.setFill(Color.web("#434345"));
-
-        // add listeners to each element
-        for (StackPane stack : elementList) {
-            addListeners(root, stack, grid, scene);
-        }
-
-        // show stage
-        primaryStage.getIcons().add(new Image("file:images/icon.png"));
-        primaryStage.setTitle("Periodic Table of Elements");
-        primaryStage.setScene(scene);
-        primaryStage.show();
     }
 
     /**
@@ -168,7 +172,7 @@ public class PeriodicTable extends Application {
      * Opens a new window of the desired element.
      *
      * @param stack the StackPane which holds the specific element
-     * @throws MalformedURLException
+     * @throws MalformedURLException if the URL is invalid
      */
     private void openElement(StackPane root, StackPane stack, GridPane grid, Scene scene) throws MalformedURLException {
 
@@ -277,14 +281,14 @@ public class PeriodicTable extends Application {
     /**
      * Sets all information about the element inside the element's pop-up window.
      *
-     * @param fill
-     * @param element
-     * @param grid
-     * @param window
-     * @param windowRect
-     * @param cell
-     * @param scene
-     * @return
+     * @param fill        fill color of the element
+     * @param element     the element
+     * @param grid        main GridPane
+     * @param window      pop-up window
+     * @param windowRect  rectangle that makes up the pop-up window
+     * @param cell        rectangle that makes up the element cell in the pop-up window
+     * @param scene       main Scene
+     * @return            GridPane with all the information about the element
      */
     private GridPane setWindowInfo(Paint fill, Element element, GridPane grid, StackPane window, Rectangle windowRect,
                                    Rectangle cell, Scene scene) {
@@ -304,10 +308,10 @@ public class PeriodicTable extends Application {
         String elementUrl;
 
         // Default Mercury brings you to the planet page
-        if (fullName == "Mercury") {
-            elementUrl = String.format("https://en.wikipedia.org/wiki/Mercury_(element)");
+        if (fullName.equals("Mercury")) {
+            elementUrl = "https://en.wikipedia.org/wiki/Mercury_(element)";
         } else {
-            elementUrl = String.format("https://en.wikipedia.org/wiki/%s", String.valueOf(fullName));
+            elementUrl = String.format("https://en.wikipedia.org/wiki/%s", fullName);
         }
 
         // format meltingPoint for each element
@@ -401,14 +405,13 @@ public class PeriodicTable extends Application {
         ArrayList<Text> cellTextList = new ArrayList<>();
 
         cellTextList.add(new Text(String.valueOf(element.getAtomicNumber())));
-        cellTextList.add(new Text(String.valueOf(element.name())));
+        cellTextList.add(new Text(element.name()));
         cellTextList.add(new Text(""));
         cellTextList.add(new Text(String.valueOf(element.getFullName())));
         cellTextList.add(new Text(String.valueOf(element.getAtomicMass())));
 
         cellTextList.get(0).setFont(Font.font("", 35));
-        // cellTextList.get(1).setFont(Font.loadFont(getClass().getResourceAsStream("/fonts/SF-Pro-Display-Bold.otf"),
-        // 100));
+        cellTextList.get(1).setFont(Font.loadFont(getClass().getResourceAsStream("/fonts/SF-Pro-Display-Bold.otf"), 100));
         cellTextList.get(1).setFont(Font.font("SF Pro Display", FontWeight.BOLD, 100));
         cellTextList.get(2).setFont(Font.font("", 10));
         cellTextList.get(3).setFont(Font.font("", 35));
@@ -432,24 +435,22 @@ public class PeriodicTable extends Application {
         if (meltingPoint == 0) {
             txtMeltingPoint = new Text("unknown");
             txtMeltingPoint.setFill(Color.LIGHTGRAY);
-            return txtMeltingPoint;
         } else {
             txtMeltingPoint = new Text(String.format("%.2f K", meltingPoint));
-            return txtMeltingPoint;
         }
+        return txtMeltingPoint;
     }
 
     private Text formatBoilingPoint(double boilingPoint) {
         Text txtBoilingPoint;
 
-        if (boilingPoint == 0) {
+        if (boilingPoint != 0) {
+            txtBoilingPoint = new Text(String.format("%.2f K", boilingPoint));
+        } else {
             txtBoilingPoint = new Text("unknown");
             txtBoilingPoint.setFill(Color.LIGHTGRAY);
-            return txtBoilingPoint;
-        } else {
-            txtBoilingPoint = new Text(String.format("%.2f K", boilingPoint));
-            return txtBoilingPoint;
         }
+        return txtBoilingPoint;
     }
 
     private Text formatDensity(double density) {
@@ -458,11 +459,10 @@ public class PeriodicTable extends Application {
         if (density == 0) {
             txtDensity = new Text("unknown");
             txtDensity.setFill(Color.LIGHTGRAY);
-            return txtDensity;
         } else {
             txtDensity = new Text(String.format("%.2f g/L", density));
-            return txtDensity;
         }
+        return txtDensity;
     }
 
     private Text formatPhase(String phase) {
