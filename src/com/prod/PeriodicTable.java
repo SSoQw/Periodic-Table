@@ -23,7 +23,7 @@ import javafx.stage.Stage;
 import javafx.util.Duration;
 import java.awt.*;
 import java.net.MalformedURLException;
-import java.net.URL;
+import java.net.URI;
 import java.util.ArrayList;
 
 /**
@@ -109,40 +109,18 @@ public class PeriodicTable extends Application {
         Rectangle rect = new Rectangle(60, 60);
 
         // get fill color
-        Color color;
-        switch (element.getCategory()) {
-            case ACTINIDE:
-                color = Color.PALEVIOLETRED;
-                break;
-            case ALKALI:
-                color = Color.CRIMSON;
-                break;
-            case ALKALINE_EARTH:
-                color = Color.CORAL;
-                break;
-            case LANTHANIDE:
-                color = Color.PLUM;
-                break;
-            case METALLOID:
-                color = Color.BURLYWOOD;
-                break;
-            case NOBLE_GAS:
-                color = Color.AQUA;
-                break;
-            case POST_TRANSITION:
-                color = Color.LIGHTSLATEGRAY;
-                break;
-            case REACTIVE_NONMETAL:
-                color = Color.GOLD;
-                break;
-            case TRANSITION:
-                color = Color.DARKSALMON;
-                break;
-            case UNKNOWN:
-            default:
-                color = Color.LIGHTGRAY;
-                break;
-        }
+        Color color = switch (element.getCategory()) {
+            case ACTINIDE -> Color.PALEVIOLETRED;
+            case ALKALI -> Color.CRIMSON;
+            case ALKALINE_EARTH -> Color.CORAL;
+            case LANTHANIDE -> Color.PLUM;
+            case METALLOID -> Color.BURLYWOOD;
+            case NOBLE_GAS -> Color.AQUA;
+            case POST_TRANSITION -> Color.LIGHTSLATEGRAY;
+            case REACTIVE_NONMETAL -> Color.GOLD;
+            case TRANSITION -> Color.DARKSALMON;
+            default -> Color.LIGHTGRAY;
+        };
 
         // set fill and stroke color of rectangle
         rect.setFill(color);
@@ -245,7 +223,10 @@ public class PeriodicTable extends Application {
      */
     private static void openWebpage(String url) {
         try {
-            Desktop.getDesktop().browse(new URL(url).toURI());
+            Desktop desktop = Desktop.getDesktop();
+            if (desktop.isSupported(Desktop.Action.BROWSE)) {
+                desktop.browse(new URI(url));
+            }
         } catch (Exception e) {
             e.printStackTrace();
         }
